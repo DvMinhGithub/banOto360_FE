@@ -1,8 +1,15 @@
+import { publicRoutes } from './routes';
+import PageLayout from './layout/pageLayout';
+import { Routes, Route } from 'react-router-dom';
+import { Fragment } from 'react';
 function App() {
   return (
-    <div className="App">
-      <h1>Ban oto 3640</h1>
-    </div>
+    <Routes>
+      {publicRoutes.map((route,index)=>{
+        const Layout = route.needShowSideMenu ? PageLayout : Fragment
+        return <Route path={route.path} key={index} element={<Layout>{route.element}</Layout>}></Route>
+      })}
+    </Routes>
   );
 }
 

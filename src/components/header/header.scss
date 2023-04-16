@@ -1,0 +1,32 @@
+.header{
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid black;
+    .header__menu{
+        width: 45%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        cursor: pointer;
+        div{
+            width: 25%;
+            text-align: center;
+        }
+        div:hover{
+            color:orange;
+        }
+    }
+    .header__action{
+        width: 15%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        cursor: pointer;
+        div:hover{
+            color:orange
+        }
+    }
+    .header__logo{
+        cursor: pointer;
+    }
+}
