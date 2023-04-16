@@ -1,0 +1,29 @@
+.login-container {
+    display: flex;
+    height: 100vh;
+}
+
+.login-image {
+    flex: 1;
+    background-image: url('https://goeco.link/diykD');
+    background-size: cover;
+}
+
+.login-form {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    padding: 30px;
+    flex-direction: column;
+
+}
+
+.login-form-button {
+    width: 100%;
+}
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}

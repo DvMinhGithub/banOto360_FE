@@ -67,7 +67,6 @@ export function httpPost(url, body = {}, token) {
   if (token) {
     headers.authorization = `Bearer ${token}`;
   }
-
   const options = {
     method: 'post',
     headers: headers,
