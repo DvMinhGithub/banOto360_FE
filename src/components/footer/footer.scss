@@ -23,6 +23,10 @@
             .footer__col-list-item {
                 margin: 13px 0;
             }
+            .footer__col-list-item:hover{
+                cursor: pointer;
+                color: white;
+            }
         }
     }
     .footer__contact {
@@ -37,12 +41,21 @@
             font-size: 15px;
             display: flex;
             justify-content: space-around;
+            *:hover{
+                color: white;
+                cursor: pointer;
+            }
         }
         .footer__contact-icon{
             width: 15%;
             font-size: 20px;
            display: flex;
            justify-content: space-around;
+           *:hover{
+            color: white;
+            cursor: pointer;
+        }
         }
     }
+   
 }

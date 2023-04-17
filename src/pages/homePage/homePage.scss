@@ -1,0 +1,24 @@
+.homepage__slider{
+    background-image: url('https://www.mercedes-benz.com.vn/content/vietnam/vi/passengercars/mercedes-benz-cars/campaigns/promo-2023-lc/_jcr_content/root/responsivegrid/simple_stage.component.damq5.3356847842426.png/marpromo-ow-landingpage.png');
+    background-size: cover; 
+    display: flex;
+    align-items: center;
+    height: 500px;
+    .slider__content{
+        
+       
+        width: 80%;
+        margin: 0 auto;
+        .slider__heading{
+            color: #f0f1f7 ;
+            font-size: 50px;
+            padding-bottom: 30px;
+        }
+        .slider__button{
+            >* {
+                margin-right: 10px;
+            }
+        }
+    }
+   
+}
