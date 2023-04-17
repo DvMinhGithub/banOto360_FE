@@ -1,7 +1,10 @@
 .header{
     display: flex;
     justify-content: space-around;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid white;
+    background-color: black;
+    color: #bdb7b7;
+    padding: 10px 0;
     .header__menu{
         width: 45%;
         display: flex;
@@ -13,7 +16,7 @@
             text-align: center;
         }
         div:hover{
-            color:orange;
+            color:white;
         }
     }
     .header__action{
@@ -23,7 +26,7 @@
         justify-content: space-evenly;
         cursor: pointer;
         div:hover{
-            color:orange
+            color:white
         }
     }
     .header__logo{
