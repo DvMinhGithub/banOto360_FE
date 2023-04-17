@@ -3,7 +3,7 @@ import HomePage from '../pages/homePage/homePage.jsx';
 import ProductPage from '../pages/productPage/productPage.jsx';
 import BlogPage from '../pages/blogPage/blogPage.jsx';
 import ContactPage from '../pages/contactPage/contactPage.jsx';
-import LoginPage from '~/features/login/loginPage';
+import LoginPage from '~/pages/loginPage/loginPage';
 export const publicRoutes = [
     {
         path: config.routes.login,
