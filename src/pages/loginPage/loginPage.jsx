@@ -1,17 +1,12 @@
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Form, Input } from 'antd';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import useAuth from '~/hooks/useAuth';
 import './loginPage.scss';
-import { loginUser } from './loginSlice';
 const LoginPage = () => {
     const [loginData, setLoginData] = useState({});
 
-    const dispatch = useDispatch();
-    const handleLogin = () => {
-        console.log(loginData);
-        dispatch(loginUser(loginData));
-    };
+    const { handleLogin } = useAuth();
 
     const handleChangeInput = (e) => {
         const { name, value } = e.target;
@@ -41,7 +36,11 @@ const LoginPage = () => {
                         />
                     </Form.Item>
                     <Form.Item>
-                        <Button type="primary" htmlType="submit" className="login-form-button" onClick={handleLogin}>
+                        <Button
+                            type="primary"
+                            htmlType="submit"
+                            className="login-form-button"
+                            onClick={() => handleLogin(loginData)}>
                             Log in
                         </Button>
                     </Form.Item>
