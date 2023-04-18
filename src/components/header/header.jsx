@@ -3,6 +3,7 @@ import { publicRoutes } from '../../routes/index';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Fragment } from 'react';
 import { ShoppingCartOutlined } from '@ant-design/icons';
+import { Button } from 'antd';
 
 export default function Header() {
     const location = useLocation();
@@ -25,7 +26,7 @@ export default function Header() {
                     return item.needShowSideMenu ? (
                         <div
                             onClick={() => navigate(item.path)}
-                            style={{ color: location.pathname === item.path && 'white'}}
+                            style={{ color: location.pathname === item.path && 'orange' }}
                             key={key}>
                             {item.label}
                         </div>
@@ -35,6 +36,13 @@ export default function Header() {
                 })}
             </div>
             <div className="header__action">
+                <Button
+                    onClick={() => {
+                        console.log('click to log in');
+                        navigate('/login');
+                    }}>
+                    Login
+                </Button>
                 <div className="header__action-account">Nguyễn Đức Lợi</div>
                 <div className="header__action-cart">
                     <ShoppingCartOutlined />

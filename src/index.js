@@ -5,10 +5,10 @@ import App from './App';
 import GlobalStyle from './components/globalStyle/globalStyle';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-// import Loading from './components/loading/loading';
 import { Provider } from 'react-redux';
-import { store } from './app/store';
+import { store } from './store';
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
     <React.StrictMode>
         <Provider store={store}>
@@ -16,7 +16,7 @@ root.render(
                 <GlobalStyle>
                     <App />
                 </GlobalStyle>
-            </Router>{' '}
+            </Router>
         </Provider>
     </React.StrictMode>,
 );
