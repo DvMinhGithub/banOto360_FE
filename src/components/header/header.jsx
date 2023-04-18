@@ -3,10 +3,14 @@ import { publicRoutes } from '../../routes/index';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Fragment } from 'react';
 import { ShoppingCartOutlined } from '@ant-design/icons';
+import useAuth from '~/hooks/useAuth';
 
 export default function Header() {
     const location = useLocation();
     const navigate = useNavigate();
+
+    const { user } = useAuth();
+
     return (
         <div className="header">
             <div
@@ -35,7 +39,7 @@ export default function Header() {
                 })}
             </div>
             <div className="header__action">
-                <div className="header__action-account">Nguyễn Đức Lợi</div>
+                <div className="header__action-account">{user ? user.userName : 'ADMIN'}</div>
                 <div className="header__action-cart">
                     <ShoppingCartOutlined></ShoppingCartOutlined>
                     <div className="cart-item">

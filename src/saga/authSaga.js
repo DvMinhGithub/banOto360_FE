@@ -1,14 +1,14 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import { authActions } from '~/action';
-import { httpPost } from '~/services';
 import { authTypes } from '~/utils/actionTypes';
+import api from '~/utils/api';
 
 function* login(data) {
     try {
-        const res = yield httpPost('http://localhost:8080/api/v1/customers/login', data.payload);
+        const res = yield api.post('customers/login', data.payload);
         yield put(authActions.loginSuccess(res));
     } catch (error) {
-        yield put(authActions.logoutFailure(error));
+        yield put(authActions.loginFailure(error));
     }
 }
 
