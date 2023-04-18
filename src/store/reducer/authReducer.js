@@ -9,18 +9,25 @@ const initialState = {
 
 const authReducer = (state = initialState, { type, payload }) => {
     switch (type) {
-        case authTypes.LOGIN_REQUEST: {
-            return { ...state, loading: true };
-        }
+        case authTypes.LOGIN_REQUEST:
+        case authTypes.REGISTER_REQUEST:
+            {
+                return { ...state, loading: true };
+            }
         case authTypes.LOGIN_SUCCESS: {
-            return { ...state, loading: true, user: payload.userData, token: payload.token }
+            return { ...state, loading: false, user: payload.userData, token: payload.token }
         }
-        case authTypes.LOGIN_FAILURE: {
-            return {
-                ...state, loading: false,
-                message: payload.message,
-            };
+        case authTypes.REGISTER_SUCCESS: {
+            return { ...state, loading: false, message: payload?.message }
         }
+        case authTypes.LOGIN_FAILURE:
+        case authTypes.REGISTER_FAILURE:
+            {
+                return {
+                    ...state, loading: false,
+                    message: payload.message,
+                };
+            }
         default:
             return state;
     }
