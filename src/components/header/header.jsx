@@ -3,7 +3,6 @@ import { publicRoutes } from '../../routes/index';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Fragment } from 'react';
 import { ShoppingCartOutlined } from '@ant-design/icons';
-import { Button } from 'antd';
 
 export default function Header() {
     const location = useLocation();
@@ -36,13 +35,6 @@ export default function Header() {
                 })}
             </div>
             <div className="header__action">
-                <Button
-                    onClick={() => {
-                        console.log('click to log in');
-                        navigate('/login');
-                    }}>
-                    Login
-                </Button>
                 <div className="header__action-account">Nguyễn Đức Lợi</div>
                 <div className="header__action-cart">
                     <ShoppingCartOutlined></ShoppingCartOutlined>

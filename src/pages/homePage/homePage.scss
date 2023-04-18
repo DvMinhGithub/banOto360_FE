@@ -21,65 +21,113 @@
             }
         }
     }
-    .homepage__list-advertise {
-        width: 90%;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-evenly;
-        .advertise__col {
-            border: 1px solid #d5d9db;
+    .homepage__content {
+        .homepage__list-advertise {
+            width: 90%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-evenly;
+            .advertise__col {
+                border: 1px solid #d5d9db;
+                width: 30%;
+                line-height: 27px;
+                padding-bottom: 45px;
+                img {
+                    width: 100%;
+                }
+                .advertise__title {
+                    padding-top: 15px;
+                    width: 85%;
+                    margin: 0 auto;
+                    font-size: 18px;
+                    font-weight: 700;
+                }
+                .advertise__col-content {
+                    height: 200px;
+                }
+                .advertise__description {
+                    width: 85%;
+                    margin: 0 auto;
+                    font-size: 16px;
+                }
+                .advertise__button {
+                    width: 85%;
+                    margin: 0 auto;
+                    color: white;
+                    background-color: #2e6ce8;
+                    text-align: center;
+                    padding: 10px 0;
+                }
+                .advertise__button:hover {
+                    cursor: pointer;
+                    background-color: #0954eb;
+                }
+            }
+        }
+        .homepage__content-heading {
+            text-align: center;
+            padding: 75px 0 75px;
+            font-size: 30px;
+            font-weight: 600;
+            
+        }
+        .btn-readmore {
+            width: 20%;
+            margin: 0 auto;
+            color: white;
+            background-color: #2e6ce8;
+            text-align: center;
+            margin-top: 40px;
+            padding: 15px 0;
+        }
+        .btn-readmore:hover {
+            background-color: #0954eb;
+            cursor: pointer;
+        }
+    }
+
+    .homepage__collection{
+       
+        .homepage__collection-heading {
+            text-align: center;
+            padding: 75px 0 100px;
+            font-size: 30px;
+            font-weight: 600;
+            
+        }
+        .collection__col{
             width: 30%;
             line-height: 27px;
             padding-bottom: 45px;
-            img {
-                width: 100%;
-            }
-            .advertise__title {
-                padding-top: 15px;
-                width: 85%;
-                margin: 0 auto;
-                font-size: 18px;
-                font-weight: 700;
-            }
-            .advertise__col-content {
-                height: 200px;
-            }
-            .advertise__description {
-                width: 85%;
-                margin: 0 auto;
-                font-size: 16px;
-            }
-            .advertise__button {
-                width: 85%;
-                margin: 0 auto;
-                color: white;
-                background-color: #2e6ce8;
-                text-align: center;
-                padding: 10px 0;
-            }
-            .advertise__button:hover {
-                cursor: pointer;
-                background-color: #0954eb;
-            }
+            
         }
-    }
-    .homepage__content-heading {
-        text-align: center;
-        padding: 50px 0;
-        font-size: 30px;
-        font-weight: 600;
-    }
-    .btn-readmore {
-        width: 20%;
-        margin: 0 auto;
-        color: white;
-        background-color: #2e6ce8;
-        text-align: center;
-        margin-top: 40px;
-        padding: 15px 0;
-    }
-    .btn-readmore:hover{
-        background-color: #0954eb;
-        cursor: pointer;
+     
+        .homepage__list-collection{
+            width: 90%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-evenly;
+            padding-bottom: 40px;
+            border-bottom: 1px solid black;
+        }
+        .advertise__title {
+            padding-top: 30px;
+            margin: 0 auto;
+            font-size: 18px;
+            font-weight: 700;
+            height: 100px;
+        }
+        .advertise__button {
+            width: 50%;
+            
+            color: white;
+            background-color: #2e6ce8;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .advertise__button:hover {
+            cursor: pointer;
+            background-color: #0954eb;
+        }
     }
 }
