@@ -4,10 +4,19 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useAuth from '~/hooks/useAuth';
 import './loginPage.scss';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 export default function LoginPage() {
-    const { handleLogin } = useAuth();
+    const { token, handleLogin } = useAuth();
 
     const [loginData, setLoginData] = useState({});
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        token && navigate('/');
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [token]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
