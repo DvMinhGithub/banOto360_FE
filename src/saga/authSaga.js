@@ -4,13 +4,15 @@ import { authActions } from '~/action';
 import { authTypes } from '~/utils/actionTypes';
 import api from '~/utils/api';
 
+
 function* login(data) {
+
     try {
         const res = yield api.post('customers/login', data.payload);
+        localStorage.setItem('token', res.token);
         yield put(authActions.loginSuccess(res));
-        window.location.href = '/'
     } catch (error) {
-        notification.error({ message: error.message })
+        notification.error({ message: error.message });
         yield put(authActions.loginFailure(error));
     }
 }

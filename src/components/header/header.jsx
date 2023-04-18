@@ -39,7 +39,15 @@ export default function Header() {
                 })}
             </div>
             <div className="header__action">
-                <div className="header__action-account">{user ? user.userName : 'ADMIN'}</div>
+                <div className="header__action-account">
+                    {Object.keys(user).length !== 0 ? (
+                        user.userName
+                    ) : (
+                        <div className="header__action-account" onClick={() => navigate('/login')}>
+                            Đăng nhập
+                        </div>
+                    )}
+                </div>
                 <div className="header__action-cart">
                     <ShoppingCartOutlined></ShoppingCartOutlined>
                     <div className="cart-item">
