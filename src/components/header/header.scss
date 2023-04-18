@@ -1,35 +1,50 @@
-.header{
+.header {
     display: flex;
     justify-content: space-around;
     border-bottom: 1px solid white;
     background-color: black;
     color: #bdb7b7;
     padding: 10px 0;
-    .header__menu{
+    .header__menu {
         width: 45%;
         display: flex;
         align-items: center;
-        justify-content: space-around;
+        justify-content: space-between;
         cursor: pointer;
-        div{
+        div {
             width: 25%;
             text-align: center;
         }
-        div:hover{
-            color:white;
+        div:hover {
+            color: white;
         }
     }
-    .header__action{
+    .header__action {
         width: 15%;
         display: flex;
         align-items: center;
         justify-content: space-evenly;
         cursor: pointer;
-        div:hover{
-            color:white
+        div:hover {
+            color: white;
         }
     }
-    .header__logo{
+    .header__logo {
         cursor: pointer;
+    }
+    .header__action-cart {
+        position: relative;
+        .cart-item {
+            position: absolute;
+            width: 23px;
+            height: 23px;
+            border-radius: 50%;
+            background-color: red;
+            text-align: center;
+            bottom: 12px;
+            left: 12px;
+            color: white;
+            font-size: 13px;
+        }
     }
 }

@@ -1,24 +1,85 @@
-.homepage__slider{
-    background-image: url('https://www.mercedes-benz.com.vn/content/vietnam/vi/passengercars/mercedes-benz-cars/campaigns/promo-2023-lc/_jcr_content/root/responsivegrid/simple_stage.component.damq5.3356847842426.png/marpromo-ow-landingpage.png');
-    background-size: cover; 
-    display: flex;
-    align-items: center;
-    height: 500px;
-    .slider__content{
-        
-       
-        width: 80%;
-        margin: 0 auto;
-        .slider__heading{
-            color: #f0f1f7 ;
-            font-size: 50px;
-            padding-bottom: 30px;
-        }
-        .slider__button{
-            >* {
-                margin-right: 10px;
+.homepage {
+    padding-bottom: 80px;
+    .homepage__slider {
+        background-image: url('https://www.mercedes-benz.com.vn/content/vietnam/vi/passengercars/mercedes-benz-cars/campaigns/promo-2023-lc/_jcr_content/root/responsivegrid/simple_stage.component.damq5.3356847842426.png/marpromo-ow-landingpage.png');
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        height: 550px;
+        .slider__content {
+            width: 80%;
+            margin: 0 auto;
+            .slider__heading {
+                color: #f0f1f7;
+                font-size: 50px;
+                padding-bottom: 40px;
+            }
+            .slider__button {
+                > * {
+                    margin-right: 10px;
+                }
             }
         }
     }
-   
+    .homepage__list-advertise {
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-evenly;
+        .advertise__col {
+            border: 1px solid #d5d9db;
+            width: 30%;
+            line-height: 27px;
+            padding-bottom: 45px;
+            img {
+                width: 100%;
+            }
+            .advertise__title {
+                padding-top: 15px;
+                width: 85%;
+                margin: 0 auto;
+                font-size: 18px;
+                font-weight: 700;
+            }
+            .advertise__col-content {
+                height: 200px;
+            }
+            .advertise__description {
+                width: 85%;
+                margin: 0 auto;
+                font-size: 16px;
+            }
+            .advertise__button {
+                width: 85%;
+                margin: 0 auto;
+                color: white;
+                background-color: #2e6ce8;
+                text-align: center;
+                padding: 10px 0;
+            }
+            .advertise__button:hover {
+                cursor: pointer;
+                background-color: #0954eb;
+            }
+        }
+    }
+    .homepage__content-heading {
+        text-align: center;
+        padding: 50px 0;
+        font-size: 30px;
+        font-weight: 600;
+    }
+    .btn-readmore {
+        width: 20%;
+        margin: 0 auto;
+        color: white;
+        background-color: #2e6ce8;
+        text-align: center;
+        margin-top: 40px;
+        padding: 15px 0;
+    }
+    .btn-readmore:hover{
+        background-color: #0954eb;
+        cursor: pointer;
+    }
 }
