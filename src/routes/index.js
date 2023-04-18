@@ -3,13 +3,13 @@ import HomePage from '../pages/homePage/homePage.jsx';
 import ProductPage from '../pages/productPage/productPage.jsx';
 import BlogPage from '../pages/blogPage/blogPage.jsx';
 import ContactPage from '../pages/contactPage/contactPage.jsx';
-import LoginPage from '~/pages/loginPage/loginPage';
+import LoginPage from '../pages/loginPage/loginPage';
+import RegisterPage from '../pages/registerPage/registerPage';
 export const publicRoutes = [
     {
         path: config.routes.login,
         needShowSideMenu: false,
         element: <LoginPage />,
-        label: 'Login',
     },
     {
         path: config.routes.home,
@@ -34,5 +34,10 @@ export const publicRoutes = [
         needShowSideMenu: true,
         element: <ContactPage />,
         label: 'Contact us',
+    },
+    {
+        path: config.routes.register,
+        needShowSideMenu: false,
+       element:<RegisterPage/>
     },
 ];
