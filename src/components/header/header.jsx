@@ -26,7 +26,7 @@ export default function Header() {
                     return item.needShowSideMenu ? (
                         <div
                             onClick={() => navigate(item.path)}
-                            style={{ color: location.pathname === item.path && 'orange' }}
+                            style={{ color: location.pathname === item.path && 'white' }}
                             key={key}>
                             {item.label}
                         </div>
@@ -45,7 +45,10 @@ export default function Header() {
                 </Button>
                 <div className="header__action-account">Nguyễn Đức Lợi</div>
                 <div className="header__action-cart">
-                    <ShoppingCartOutlined />
+                    <ShoppingCartOutlined></ShoppingCartOutlined>
+                    <div className="cart-item">
+                        <span>0</span>
+                    </div>
                 </div>
             </div>
         </div>
