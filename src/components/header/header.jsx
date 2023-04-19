@@ -9,7 +9,7 @@ export default function Header() {
     const location = useLocation();
     const navigate = useNavigate();
 
-    const { user } = useAuth();
+    const { token, user } = useAuth();
 
     return (
         <div className="header">
@@ -40,7 +40,7 @@ export default function Header() {
             </div>
             <div className="header__action">
                 <div className="header__action-account">
-                    {Object.keys(user).length !== 0 ? (
+                    {token ? (
                         user.userName
                     ) : (
                         <div className="header__action-account" onClick={() => navigate('/login')}>

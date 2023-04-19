@@ -3,8 +3,8 @@ import { authTypes } from '~/utils/actionTypes';
 const initialState = {
     loading: false,
     user: {},
-    token: '',
-    message: '',
+    token: null,
+    message: null,
 };
 
 const authReducer = (state = initialState, { type, payload }) => {
