@@ -9,7 +9,6 @@ function* login(data) {
 
     try {
         const res = yield api.post('customers/login', data.payload);
-        localStorage.setItem('token', res.token);
         yield put(authActions.loginSuccess(res));
     } catch (error) {
         notification.error({ message: error.message });

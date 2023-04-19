@@ -19,7 +19,7 @@ export default function RegisterPage() {
                 <h1>Đăng ký</h1>
                 <Form name="register-form" style={{ width: '60%' }}>
                     <Form.Item>
-                        <Input placeholder="Tên người dùng" name="username" onChange={handleChange} />
+                        <Input placeholder="Tên người dùng" name="userName" onChange={handleChange} />
                     </Form.Item>
                     <Form.Item>
                         <Input placeholder="Số điện thoại" name="phoneNumber" onChange={handleChange} />

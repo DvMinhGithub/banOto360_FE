@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import useAuth from '~/hooks/useAuth';
 
 export default function ProtectedComponent({ children }) {
-    const token = localStorage.getItem('token');
+    const { token } = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
     const { pathname } = location;
@@ -18,7 +19,7 @@ export default function ProtectedComponent({ children }) {
                 navigate('/login');
             }
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     return children;
 }
