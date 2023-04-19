@@ -1,6 +1,14 @@
 import { Button } from 'antd';
 import './homePage.scss';
+import { useEffect } from 'react';
+import useHome from '~/hooks/useHome';
 export default function HomePage() {
+    const { carCollection, getCarCollection } = useHome();
+
+    useEffect(() => {
+        getCarCollection();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
         <div className="homepage">
@@ -19,42 +27,21 @@ export default function HomePage() {
             <div className="homepage__collection">
                 <div className="homepage__collection-heading">New Collection</div>
                 <div className="homepage__list-collection">
-                    <div className="collection__col">
-                        <img
-                            src="https://assets.oneweb.mercedes-benz.com/iris/iris.png?COSY-EU-100-1713d0VXqrW7qtyO67PobzIr3eWsrrCsdRRzwQZxevZbMw3SGtGyMtsdAv3cUf5rcXGE5YrJbXSqxVKnn8wPqyoiZGkIM4F0srTg9Wmn6PDdR6SeWfxWtsdEkdcUflmWXGE2BdJ0lpArOB2dB1bApftwI5uEMYQC3lQ7kzN25bm7jpv3hKV0cM%25vqrUdyLRnb6YaxoTWrH1MVtn8wBocoiZCkNM4FYFjTg9it26PD4cFSeWgyWtsdPoxcUfeYWXGEs6SJ0lU9hOB2%25gqbApFooI5u9nuQC3Ih3kzNQmnm7jkHZhKVmhM%25vqkyqyLRaQVYaxHrqrH1lMrn8w2Q3oiZprIM4FZ4JTg9FYn6PDt7bSeWyyutsdZmTcUaqKDTb32VXqo8VHZyf%25XEd9BBpxb1loE1JnwxV4V%25d%25CWLH59zW0uB1EdxgXeblpsRpv%25Z=&BKGND=9&IMGT=P27&POV=BE030&im=Trim&fuzz=0.5&width=670"
-                            alt=""
-                            width={300}
-                            height={150}
-                        />
-                        <div className="advertise__col-collection">
-                            <div className="advertise__title">Mercedes AMG G-63</div>
-                        </div>
-                        <div className="advertise__button">Xem chi tiết</div>
-                    </div>
-                    <div className="collection__col">
-                        <img
-                            src="https://assets.oneweb.mercedes-benz.com/iris/iris.png?COSY-EU-100-1713d0VXqaWFqtyO67PobzIr3eWsrrCsdRRzwQZ6kvZbMw3SGtle9tsd2HdcUfp8qXGEubmJ0l3ItOB2NQnbApjtwI5uVQDQC31MjkzNwzwm7jA2jhKViSF%25vq4y9yLRgY2YaxPr9rH1yC%25n8w0Q3oiZBklM4FvIrTg9LxZ6PDaGbSeWH0Wtsd8BxcUfAyYXOc6VRj7rrH1CIdn8w5zhoiZHiZM4F84uTg9jz96PDePoSeWsKMtsdUvVcUaqKDTb32VXq0WcYl9f%25XEd9BBpxb1loE1JnwxV4V%25d%25CWLH59zW0uB1EdxgXeblpsRpv%25Z=&BKGND=9&IMGT=P27&POV=BE030&im=Trim&fuzz=0.5&width=670"
-                            alt=""
-                            width={300}
-                            height={150}
-                        />
-                        <div className="advertise__col-collection">
-                            <div className="advertise__title">C 200 Avantgarde</div>
-                        </div>
-                        <div className="advertise__button">Xem chi tiết</div>
-                    </div>
-                    <div className="collection__col">
-                        <img
-                            src="https://assets.oneweb.mercedes-benz.com/iris/iris.png?COSY-EU-100-1713d0VXqrWFqtyO67PobzIr3eWsrrCsdRRzwQZhZpZbMw3SGtGyMtsd2J%25cUfpMqXGEjy2J0lV0VOB2qBcbApRIoI5uG5uQC30h7kzNBlkm7j86ZhKViSM%25vq4vZyLRgnyYaxPNqrH1entn8wsoxoiZBkEM4FvIrTg9Lg26PDa1FSeWHnStsd8c%25cUfiANXGE45mJ0lgCZOB2znobQOcxwRLMM4FKKrTg97xq6PD47bSeWgXhtsdR5ocUfGL0XGE0bRJ0lB6VOB2AbEbApTnwI5gZ8lXhRjwQZzkvlKRuoQ3pE77V9hDNt3DkSW9wUwopoL24PvEa2zq7D3p9GQBhNVAFViod=&BKGND=9&IMGT=P27&POV=BE030&im=Trim&fuzz=0.5&width=670"
-                            alt=""
-                            width={300}
-                            height={150}
-                        />
-                        <div className="advertise__col-collection">
-                            <div className="advertise__title">Mercedes-AMG GT 53 4MATIC+ (Facelift)</div>
-                        </div>
-                        <div className="advertise__button">Xem chi tiết</div>
-                    </div>
+                    {carCollection.length > 0 ? (
+                        carCollection?.slice(0, 3).map((car) => {
+                            return (
+                                <div className="collection__col" key={car._id}>
+                                    <img src={car?.carImage} alt="" width={300} height={150} />
+                                    <div className="advertise__col-collection">
+                                        <div className="advertise__title">{car?.name}</div>
+                                    </div>
+                                    <div className="advertise__button">Xem chi tiết</div>
+                                </div>
+                            );
+                        })
+                    ) : (
+                        <h1 style={{ color: 'red' }}>Chèn dữ liệu vào databse đi chấn bé đù</h1>
+                    )}
                 </div>
             </div>
 
