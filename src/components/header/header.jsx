@@ -1,15 +1,22 @@
 import './header.scss';
 import { publicRoutes } from '../../routes/index';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useCallback, useEffect, useState } from 'react';
 import { ShoppingCartOutlined } from '@ant-design/icons';
 import useAuth from '~/hooks/useAuth';
-
+import CartComponent from '../cart/cart';
 export default function Header() {
     const location = useLocation();
     const navigate = useNavigate();
     const [userName, setUserName] = useState('');
     const { token, user } = useAuth();
+    const [openCart, setOpenCart] = useState(false);
+    const handleShowCart = () => {
+      setOpenCart(true);
+    };
+    const handleCloseCart = useCallback(()=>{
+            setOpenCart(false);
+    },[]) 
     useEffect(() => {
         setUserName(user.userName);
     }, []);
@@ -43,7 +50,8 @@ export default function Header() {
             <div className="header__action">
                 <div className="header__action-account">{userName}</div>
                 <div className="header__action-cart">
-                    <ShoppingCartOutlined></ShoppingCartOutlined>
+                    <ShoppingCartOutlined onClick={handleShowCart}></ShoppingCartOutlined>
+                    <CartComponent openCart={openCart} onClose={handleCloseCart}/>
                     <div className="cart-item">
                         <span>0</span>
                     </div>
