@@ -1,16 +1,18 @@
 import './header.scss';
 import { publicRoutes } from '../../routes/index';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Fragment } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { ShoppingCartOutlined } from '@ant-design/icons';
 import useAuth from '~/hooks/useAuth';
 
 export default function Header() {
     const location = useLocation();
     const navigate = useNavigate();
-
+    const [userName, setUserName] = useState('');
     const { token, user } = useAuth();
-
+    useEffect(() => {
+        setUserName(user.userName);
+    }, []);
     return (
         <div className="header">
             <div
@@ -39,15 +41,7 @@ export default function Header() {
                 })}
             </div>
             <div className="header__action">
-                <div className="header__action-account">
-                    {token ? (
-                        user.userName
-                    ) : (
-                        <div className="header__action-account" onClick={() => navigate('/login')}>
-                            Đăng nhập
-                        </div>
-                    )}
-                </div>
+                <div className="header__action-account">{userName}</div>
                 <div className="header__action-cart">
                     <ShoppingCartOutlined></ShoppingCartOutlined>
                     <div className="cart-item">
