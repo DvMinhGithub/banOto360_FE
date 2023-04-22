@@ -2,59 +2,17 @@ import { useState, useEffect } from 'react';
 import './productPage.scss';
 import { Select, Slider } from 'antd';
 import { ShoppingCartOutlined } from '@ant-design/icons';
+import { useProduct } from '~/hooks';
 export default function ProductPage() {
+    const { products, getAllProducts } = useProduct();
+
     const [price, setPrice] = useState(0);
-    const [listCar,setListCar]= useState([])
-    const productData = [
-        {
-            name: 'Mercedes AMG-G63',
-            price: 1000,
-            discount: 10,
-            amountPrice: 900,
-            model: 'G-Class',
-            company: 'Mercedes',
-            carImage:
-                'https://assets.oneweb.mercedes-benz.com/iris/iris.png?COSY-EU-100-1713d0VXqrW7qtyO67PobzIr3eWsrrCsdRRzwQZxevZbMw3SGtGyMtsdAv3cUf5rcXGE5YrJbXSqxVKnn8wPqyoiZGkIM4F0srTg9Wmn6PDdR6SeWfxWtsdEkdcUflmWXGE2BdJ0lpArOB2dB1bApftwI5uEMYQC3lQ7kzN25bm7jpv3hKV0cM%25vqrUdyLRnb6YaxoTWrH1MVtn8wBocoiZCkNM4FYFjTg9it26PD4cFSeWgyWtsdPoxcUfeYWXGEs6SJ0lU9hOB2%25gqbApFooI5u9nuQC3Ih3kzNQmnm7jkHZhKVmhM%25vqkyqyLRaQVYaxHrqrH1lMrn8w2Q3oiZprIM4FZ4JTg9FYn6PDt7bSeWyyutsdZmTcUaqKDTb32VXqo8VHZyf%25XEd9BBpxb1loE1JnwxV4V%25d%25CWLH59zW0uB1EdxgXeblpsRpv%25Z=&BKGND=9&IMGT=P27&POV=BE030&im=Trim&fuzz=0.5&width=670',
-            color: 'red',
-            description: 'Xe được sản xuất tại Hà Đông',
-        },
-        {
-            name: 'Mercedes-AMG GT 53 4MATIC+',
-            price: 1000,
-            discount: 10,
-            amountPrice: 900,
-            model: 'G-Class',
-            company: 'Mercedes',
-            carImage:
-                'https://assets.oneweb.mercedes-benz.com/iris/iris.png?COSY-EU-100-1713d0VXqrWFqtyO67PobzIr3eWsrrCsdRRzwQZhZpZbMw3SGtGyMtsd2J%25cUfpMqXGEjy2J0lV0VOB2qBcbApRIoI5uG5uQC30h7kzNBlkm7j86ZhKViSM%25vq4vZyLRgnyYaxPNqrH1entn8wsoxoiZBkEM4FvIrTg9Lg26PDa1FSeWHnStsd8c%25cUfiANXGE45mJ0lgCZOB2znobQOcxwRLMM4FKKrTg97xq6PD47bSeWgXhtsdR5ocUfGL0XGE0bRJ0lB6VOB2AbEbApTnwI5gZ8lXhRjwQZzkvlKRuoQ3pE77V9hDNt3DkSW9wUwopoL24PvEa2zq7D3p9GQBhNVAFViod=&BKGND=9&IMGT=P27&POV=BE030&im=Trim&fuzz=0.5&width=670',
-            color: 'red',
-            description: 'Xe này hay được dùng để chở đĩ',
-        },
-        {
-            name: 'Mercedes AMG-G63',
-            price: 1000,
-            discount: 10,
-            amountPrice: 900,
-            model: 'G-Class',
-            company: 'Mercedes',
-            carImage:
-                'https://assets.oneweb.mercedes-benz.com/iris/iris.png?COSY-EU-100-1713d0VXqrW7qtyO67PobzIr3eWsrrCsdRRzwQZxevZbMw3SGtGyMtsdAv3cUf5rcXGE5YrJbXSqxVKnn8wPqyoiZGkIM4F0srTg9Wmn6PDdR6SeWfxWtsdEkdcUflmWXGE2BdJ0lpArOB2dB1bApftwI5uEMYQC3lQ7kzN25bm7jpv3hKV0cM%25vqrUdyLRnb6YaxoTWrH1MVtn8wBocoiZCkNM4FYFjTg9it26PD4cFSeWgyWtsdPoxcUfeYWXGEs6SJ0lU9hOB2%25gqbApFooI5u9nuQC3Ih3kzNQmnm7jkHZhKVmhM%25vqkyqyLRaQVYaxHrqrH1lMrn8w2Q3oiZprIM4FZ4JTg9FYn6PDt7bSeWyyutsdZmTcUaqKDTb32VXqo8VHZyf%25XEd9BBpxb1loE1JnwxV4V%25d%25CWLH59zW0uB1EdxgXeblpsRpv%25Z=&BKGND=9&IMGT=P27&POV=BE030&im=Trim&fuzz=0.5&width=670',
-            color: 'red',
-            description: 'Xe này đẹp vãi ò',
-        },
-        {
-            name: 'Mercedes AMG-G63',
-            price: 1000,
-            discount: 10,
-            amountPrice: 900,
-            model: 'G-Class',
-            company: 'Mercedes',
-            carImage:
-                'https://assets.oneweb.mercedes-benz.com/iris/iris.png?COSY-EU-100-1713d0VXqrW7qtyO67PobzIr3eWsrrCsdRRzwQZxevZbMw3SGtGyMtsdAv3cUf5rcXGE5YrJbXSqxVKnn8wPqyoiZGkIM4F0srTg9Wmn6PDdR6SeWfxWtsdEkdcUflmWXGE2BdJ0lpArOB2dB1bApftwI5uEMYQC3lQ7kzN25bm7jpv3hKV0cM%25vqrUdyLRnb6YaxoTWrH1MVtn8wBocoiZCkNM4FYFjTg9it26PD4cFSeWgyWtsdPoxcUfeYWXGEs6SJ0lU9hOB2%25gqbApFooI5u9nuQC3Ih3kzNQmnm7jkHZhKVmhM%25vqkyqyLRaQVYaxHrqrH1lMrn8w2Q3oiZprIM4FZ4JTg9FYn6PDt7bSeWyyutsdZmTcUaqKDTb32VXqo8VHZyf%25XEd9BBpxb1loE1JnwxV4V%25d%25CWLH59zW0uB1EdxgXeblpsRpv%25Z=&BKGND=9&IMGT=P27&POV=BE030&im=Trim&fuzz=0.5&width=670',
-            color: 'red',
-            description: 'Xe này đẹp vãi ò',
-        },
-    ];
+
+    useEffect(() => {
+        getAllProducts();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     const colorSelect = [
         {
             value: 'Yellow',
@@ -91,10 +49,10 @@ export default function ProductPage() {
             label: 'Audi',
         },
     ];
-    useEffect(() => {
-        //dispatch action get car vào đây
-        setListCar(productData)
-    }, []);
+    // useEffect(() => {
+    //     //dispatch action get car vào đây
+    //     setListCar(productData);
+    // }, []);
     return (
         <div className="product">
             <h1 className="product__heading">Welcome To Our Products</h1>
@@ -134,18 +92,21 @@ export default function ProductPage() {
                 </div>
                 <div className="product__content-cars">
                     <div className="list-product">
-                        {listCar.map((item, key) => {
+                        {products?.map((item, key) => {
                             return (
                                 <div key={key} className="product">
-                                    <img src={item.carImage} alt="error img"></img>
+                                    <img className="product__image" src={item.carImage} alt="error img" />
                                     <div className="product__name">{item.name}</div>
                                     <div className="product__price">
-                                        <div className='product__price-after'>{item.amountPrice}$</div>
-                                        <div className='product__price-before'>{item.price}$</div>
+                                        <div className="product__price-after">{item.amountPrice}$</div>
+                                        <div className="product__price-before">{item.price}$</div>
                                     </div>
-                                    <div className='product__description'>{item.description}</div>
-                                    <div className='btn-addToCart'><ShoppingCartOutlined className='cart-icon' />Thêm vào giỏ hàng</div>
-                                    <div className='btn-viewDetail'>Xem chi tiết</div>
+                                    <div className="product__description">{item.description}</div>
+                                    <div className="btn-addToCart">
+                                        <ShoppingCartOutlined className="cart-icon" />
+                                        Thêm vào giỏ hàng
+                                    </div>
+                                    <div className="btn-viewDetail">Xem chi tiết</div>
                                 </div>
                             );
                         })}

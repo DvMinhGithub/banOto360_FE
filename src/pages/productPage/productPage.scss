@@ -1,107 +1,110 @@
-.product__heading{
+.product__heading {
     text-align: center;
     font-size: 35px;
     margin: 60px 0;
 }
-.product__content{
+.product__content {
     border-top: 1px solid #e9ebf0;
     display: flex;
     width: 85%;
     margin: 0 auto;
     justify-content: space-between;
-    .product__content-action{
+    .product__content-action {
         width: 20%;
-        >*{
+        > * {
             margin: 15px 0;
         }
-        .input-search{
+        .input-search {
             border: 1px solid #d9d9d9;
             width: 100%;
             padding: 8px 10px;
             border-radius: 5px;
         }
-        .voucher{
+        .voucher {
             width: 100%;
             text-align: center;
             background-color: black;
             color: white;
             padding: 10px 0;
             cursor: pointer;
-            opacity: 1.0;
-            &:hover{
+            opacity: 1;
+            &:hover {
                 opacity: 0.8;
-        
             }
         }
-        .ant-slider{
+        .ant-slider {
             width: 100%;
             margin-bottom: 30px;
         }
     }
-    .product__content-cars{
-        
+    .product__content-cars {
         width: 75%;
-        .list-product{
+        .list-product {
             width: 100%;
-           display: flex;
-           flex-wrap: wrap;
-           justify-content: space-around;
-            .product{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+
+            .product {
                 border: 1px solid #e9ebf0;
                 width: 45%;
                 text-align: center;
                 margin: 15px 0;
                 padding: 40px 0 10px;
-               
-                .product__description{
+
+                .product__image {
+                    max-width: 100%;
+                    max-height: 100%;
+                    object-fit: cover;
+                }
+
+                .product__description {
                     height: 50px;
                 }
-                .product__name{
+                .product__name {
                     font-size: 20px;
                     font-weight: 600;
                     margin-top: 30px;
                 }
-                .btn-addToCart{
+                .btn-addToCart {
                     width: 90%;
                     background-color: #2e6ce8;
                     margin: 10px auto;
                     padding: 10px 0;
                     color: white;
                     cursor: pointer;
-                    .cart-icon{
+                    .cart-icon {
                         margin-right: 5px;
                     }
-                    &:hover{
+                    &:hover {
                         opacity: 0.8;
                     }
                 }
-                .btn-viewDetail{
+                .btn-viewDetail {
                     width: 90%;
-                    border: 1px solid blue  ;
+                    border: 1px solid blue;
                     border-radius: 10px;
                     margin: 0 auto;
                     padding: 10px 0;
                     color: white;
                     margin: 10px auto;
                     cursor: pointer;
-                    &:hover{
+                    &:hover {
                         opacity: 0.6;
                     }
                     color: blue;
                 }
-                .product__price{
+                .product__price {
                     display: flex;
                     justify-content: center;
-                    .product__price-after{
-                        
+                    .product__price-after {
                         color: #f94c43;
                         font-size: 15px;
                         font-weight: 500;
                         margin: 10px 10px 0 10px;
-                    
                     }
-                    
-                    .product__price-before{
+
+                    .product__price-before {
                         font-size: 15px;
                         font-weight: 500;
                         text-decoration: line-through;
