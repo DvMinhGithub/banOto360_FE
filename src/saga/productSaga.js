@@ -6,8 +6,6 @@ import api from '~/utils/api';
 function* getAllProducts() {
     try {
         const res = yield api.get('/cars');
-        console.log('🚀 ~ file: productSaga.js:9 ~ function*getAllProducts ~ res:', res);
-
         yield put(productActions.getAllProductsSuccess(res));
     } catch (error) {
         yield put(productActions.getCarCollectionFailure(error));

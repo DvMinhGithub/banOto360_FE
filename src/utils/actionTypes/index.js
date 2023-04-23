@@ -1,5 +1,5 @@
-import * as authTypes from './authTypes';
-import * as homeTypes from './homeTypes';
-import * as productTypes from './productTypes';
+import { authTypes } from './authTypes';
+import { homeTypes } from './homeTypes';
+import { productTypes } from './productTypes';
 
 export { authTypes, homeTypes, productTypes };
