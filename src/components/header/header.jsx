@@ -16,11 +16,11 @@ export default function Header() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    // const cartItems = [];
+    // const user = {};
+
     const location = useLocation();
     const navigate = useNavigate();
-
-    // không cần thiết
-    // const [userName, setUserName] = useState('');
 
     const [openCart, setOpenCart] = useState(false);
 
@@ -31,7 +31,6 @@ export default function Header() {
     const handleCloseCart = useCallback(() => {
         setOpenCart(false);
     }, []);
-    
     return (
         <div className="header">
             <div
