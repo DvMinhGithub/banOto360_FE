@@ -14,7 +14,7 @@ export default function Header() {
     useEffect(() => {
         getCartList(user._id);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [cartItems]);
+    }, []);
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -31,7 +31,7 @@ export default function Header() {
     const handleCloseCart = useCallback(() => {
         setOpenCart(false);
     }, []);
-
+    
     return (
         <div className="header">
             <div
@@ -73,7 +73,9 @@ export default function Header() {
                     />
                     <div className="cart-item">
                         <span>
-                            {cartItems?.length >= 0 ? cartItems?.length : 0}
+                            {cartItems.listProduct?.length >= 0
+                                ? cartItems.listProduct?.length
+                                : 0}
                         </span>
                     </div>
                 </div>
