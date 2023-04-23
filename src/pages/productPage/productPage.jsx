@@ -95,7 +95,7 @@ export default function ProductPage() {
                         {products?.map((item, key) => {
                             return (
                                 <div key={key} className="product">
-                                    <img className="product__image" src={item.carImage} alt="error img" />
+                                    <img width="90%" height={250} className="product__image" src={item.carImage} alt="error img" />
                                     <div className="product__name">{item.name}</div>
                                     <div className="product__price">
                                         <div className="product__price-after">{item.amountPrice}$</div>
