@@ -31,6 +31,7 @@ export default function Header() {
         setOpenCart(false);
     }, []);
 
+    console.log(cartItems)
     return (
         <div className="header">
             <div
@@ -72,8 +73,8 @@ export default function Header() {
                     />
                     <div className="cart-item">
                         <span>
-                            {cartItems.listProduct?.length >= 0
-                                ? cartItems.listProduct?.length
+                            {cartItems?.length >= 0
+                                ? cartItems?.length
                                 : 0}
                         </span>
                     </div>

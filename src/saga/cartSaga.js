@@ -12,6 +12,17 @@ function* getCartList({ payload }) {
     }
 }
 
-const cartSaga = [takeLatest(cartActions.getCartListRequest, getCartList)];
+function* addToCartList({ payload }) {
+    try {
+        const res = yield api.post(`/carts/`);
+    } catch (error) {
+        yield put(cartActions.addToCartFailure(error));
+    }
+}
+
+const cartSaga = [
+    takeLatest(cartActions.getCartListRequest, getCartList),
+    takeLatest(cartActions.addToCartRequest, addToCartList),
+];
 
 export default cartSaga;
