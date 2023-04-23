@@ -12,6 +12,8 @@ function* getAllProducts() {
     }
 }
 
-const productSaga = [takeLatest(productTypes.GET_ALL_PRODUCTS_REQUEST, getAllProducts)];
+const productSaga = [
+    takeLatest(productTypes.GET_ALL_PRODUCTS_REQUEST, getAllProducts),
+];
 
 export default productSaga;

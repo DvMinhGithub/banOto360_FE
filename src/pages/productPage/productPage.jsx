@@ -54,7 +54,6 @@ export default function ProductPage() {
     ];
 
     const handleAddToCart = (product) => {
-        console.log("🚀 ~ file: productPage.jsx:57 ~ handleAddToCart ~ product:", product)
         const data = {
             idCustomer: user._id,
             idProduct: product._id,
