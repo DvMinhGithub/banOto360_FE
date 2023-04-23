@@ -1,6 +1,7 @@
 import { Drawer, Empty } from 'antd';
 import { memo } from 'react';
 import './cart.scss';
+import { useProduct } from '~/hooks';
 
 function CartComponent({ openCart, onClose, cartItems }) {
     return (
@@ -10,11 +11,11 @@ function CartComponent({ openCart, onClose, cartItems }) {
                 placement="right"
                 onClose={onClose}
                 open={openCart}>
-                {cartItems.listProduct?.length > 0 ? (
-                    cartItems?.listProduct.map((item) => (
+                {cartItems?.length > 0 ? (
+                    cartItems?.map((item) => (
                         <div key={item._id}>
-                            idProduct: {item.idProduct} Amount
-                            {item.amountProduct}
+                            name: {item.name} amountPrice
+                            {item.amountPrice}
                         </div>
                     ))
                 ) : (
