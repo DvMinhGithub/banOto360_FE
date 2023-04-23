@@ -2,11 +2,9 @@ import { Drawer, Empty } from 'antd';
 import { memo } from 'react';
 import './cart.scss';
 
-import { Table } from 'antd';
-import { InputNumber } from 'antd';
+import { InputNumber, Table } from 'antd';
 
 function CartComponent({ openCart, onClose, cartItems }) {
-    console.log("🚀 ~ file: cart.jsx:9 ~ CartComponent ~ cartItems:", cartItems)
     const columns2 = [
         {
             title: 'Ảnh',
@@ -27,15 +25,9 @@ function CartComponent({ openCart, onClose, cartItems }) {
         },
         {
             title: 'Số lượng',
-            dataIndex: 'amountProduct',
+            dataIndex: ['amountProduct'],
             key: 'amountProduct',
-            render: (text, record) => (
-                <InputNumber
-                    min={1}
-                    defaultValue={text}
-                    onChange={(value) => console.log(value)}
-                />
-            ),
+            render: (text, record) => <InputNumber min={1} value={text} />,
         },
         {
             title: 'Giá',
