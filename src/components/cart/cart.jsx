@@ -1,7 +1,6 @@
 import { Drawer, Empty } from 'antd';
 import { memo } from 'react';
 import './cart.scss';
-import { useProduct } from '~/hooks';
 
 function CartComponent({ openCart, onClose, cartItems }) {
     return (
@@ -12,16 +11,18 @@ function CartComponent({ openCart, onClose, cartItems }) {
                 onClose={onClose}
                 open={openCart}>
                 {cartItems?.length > 0 ? (
-                    cartItems?.map((item) => (
-                        <div key={item._id}>
-                            name: {item.name} amountPrice
-                            {item.amountPrice}
-                        </div>
-                    ))
+                    <>
+                        {cartItems?.map((item) => (
+                            <div key={item._id}>
+                                name: {item.name} amountPrice
+                                {item.amountPrice}
+                            </div>
+                        ))}
+                        <p>Tổng tiền : {cartItems.totalPrice} </p>
+                    </>
                 ) : (
                     <Empty />
                 )}
-                <p>Tổng tiền : {cartItems.totalPrice} </p>
             </Drawer>
         </div>
     );

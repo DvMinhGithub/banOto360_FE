@@ -1,11 +1,12 @@
-import './header.scss';
-import { publicRoutes } from '../../routes/index';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { Fragment, useCallback, useEffect, useState } from 'react';
 import { ShoppingCartOutlined } from '@ant-design/icons';
-import useAuth from '~/hooks/useAuth';
-import CartComponent from '../cart/cart';
+import { Fragment, useCallback, useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useCart } from '~/hooks';
+import useAuth from '~/hooks/useAuth';
+import { publicRoutes } from '../../routes/index';
+import CartComponent from '../cart/cart';
+import './header.scss';
+
 export default function Header() {
     const { user } = useAuth();
     const { cartItems, getCartList } = useCart();
@@ -13,7 +14,7 @@ export default function Header() {
     useEffect(() => {
         getCartList(user._id);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [cartItems]);
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -31,7 +32,6 @@ export default function Header() {
         setOpenCart(false);
     }, []);
 
-    console.log(cartItems)
     return (
         <div className="header">
             <div
@@ -73,9 +73,7 @@ export default function Header() {
                     />
                     <div className="cart-item">
                         <span>
-                            {cartItems?.length >= 0
-                                ? cartItems?.length
-                                : 0}
+                            {cartItems?.length >= 0 ? cartItems?.length : 0}
                         </span>
                     </div>
                 </div>

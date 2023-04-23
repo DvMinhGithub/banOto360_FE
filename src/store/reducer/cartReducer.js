@@ -13,6 +13,7 @@ const cartReducer = (state = initialState, { type, payload }) => {
             return { ...state, loading: true };
 
         case cartTypes.GET_CART_LIST_SUCCESS:
+        case cartTypes.ADD_TO_CART_SUCCESS:
             return { ...state, loading: false, cartItems: payload.data };
 
         case cartTypes.GET_CART_LIST_FAILURE:
