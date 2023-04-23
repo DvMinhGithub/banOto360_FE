@@ -5,21 +5,32 @@ import { Fragment, useCallback, useEffect, useState } from 'react';
 import { ShoppingCartOutlined } from '@ant-design/icons';
 import useAuth from '~/hooks/useAuth';
 import CartComponent from '../cart/cart';
+import { useCart } from '~/hooks';
 export default function Header() {
+    const { user } = useAuth();
+    const { cartItems, getCartList } = useCart();
+
+    useEffect(() => {
+        getCartList(user._id);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     const location = useLocation();
     const navigate = useNavigate();
-    const [userName, setUserName] = useState('');
-    const { token, user } = useAuth();
+
+    // không cần thiết
+    // const [userName, setUserName] = useState('');
+
     const [openCart, setOpenCart] = useState(false);
+
     const handleShowCart = () => {
-      setOpenCart(true);
+        setOpenCart(true);
     };
-    const handleCloseCart = useCallback(()=>{
-            setOpenCart(false);
-    },[]) 
-    useEffect(() => {
-        setUserName(user.userName);
+
+    const handleCloseCart = useCallback(() => {
+        setOpenCart(false);
     }, []);
+
     return (
         <div className="header">
             <div
@@ -38,7 +49,10 @@ export default function Header() {
                     return item.needShowSideMenu ? (
                         <div
                             onClick={() => navigate(item.path)}
-                            style={{ color: location.pathname === item.path && 'white' }}
+                            style={{
+                                color:
+                                    location.pathname === item.path && 'white',
+                            }}
                             key={key}>
                             {item.label}
                         </div>
@@ -48,12 +62,20 @@ export default function Header() {
                 })}
             </div>
             <div className="header__action">
-                <div className="header__action-account">{userName}</div>
+                <div className="header__action-account">{user?.userName}</div>
                 <div className="header__action-cart">
-                    <ShoppingCartOutlined onClick={handleShowCart}></ShoppingCartOutlined>
-                    <CartComponent openCart={openCart} onClose={handleCloseCart}/>
+                    <ShoppingCartOutlined onClick={handleShowCart} />
+                    <CartComponent
+                        openCart={openCart}
+                        onClose={handleCloseCart}
+                        cartItems={cartItems}
+                    />
                     <div className="cart-item">
-                        <span>0</span>
+                        <span>
+                            {cartItems.listProduct?.length >= 0
+                                ? cartItems.listProduct?.length
+                                : 0}
+                        </span>
                     </div>
                 </div>
             </div>
