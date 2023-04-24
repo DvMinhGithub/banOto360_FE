@@ -5,11 +5,10 @@ import { ShoppingCartOutlined } from '@ant-design/icons';
 import { useAuth, useCart, useProduct } from '~/hooks';
 export default function ProductPage() {
     const { products, getAllProducts } = useProduct();
+    const {cartItems} = useCart()
     const { user } = useAuth();
     const { addToCart } = useCart();
-
     const [price, setPrice] = useState(0);
-
     useEffect(() => {
         getAllProducts();
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -54,12 +53,15 @@ export default function ProductPage() {
     ];
 
     const handleAddToCart = (product) => {
-        const data = {
-            idCustomer: user._id,
-            idProduct: product._id,
-            amountPrice: product.amountPrice,
-        };
-        addToCart(data);
+       let isExist = cartItems.listProduct.find(item=>item.idProduct === product._id )
+       console.log(cartItems.listProduct,product._id)
+       if(isExist){
+        isExist.amountProduct+=1
+       }else{
+        cartItems.listProduct.push({idProduct:product._id,amountProduct:1})
+       }
+    addToCart(cartItems)
+    
     };
 
     return (
