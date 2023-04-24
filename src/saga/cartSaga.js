@@ -12,11 +12,11 @@ function* getCartList({ payload }) {
     }
 }
 
-function* addToCartList({ payload: { idCustomer, ...body } }) {
+function* addToCartList({payload:{idCustomer,listProduct}} ) {
     try {
-        const res = yield api.post(`/carts/${idCustomer}`, body);
-        console.log("🚀 ~ file: cartSaga.js:19 ~ function*addToCartList ~ res:", res)
+        const res = yield api.post(`/carts/${idCustomer}`, listProduct);
         yield put(cartActions.addToCartSuccess(res));
+        yield put(cartActions.getCartListRequest(idCustomer))
     } catch (error) {
         yield put(cartActions.addToCartFailure(error));
     }
