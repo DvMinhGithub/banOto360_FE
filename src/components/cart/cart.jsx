@@ -5,6 +5,25 @@ import './cart.scss';
 import { InputNumber, Table } from 'antd';
 
 function CartComponent({ openCart, onClose, cartItems }) {
+
+    // const handleAddMore = (idProduct)=>{//id product ở đây là id của sản phẩm đang bấm thêm hoặc xoá
+    //     const product = cartItems.find(item=>item.idProduct._id === idProduct)
+    //     product.amountPrice += 1
+    //     addToCart(cartItems)
+    //   }
+      
+    //   const handleDeleteMore = (idProduct)=>{
+    //     const product = cartItems.find(item=>item.idProduct._id === idProduct)
+    //     product.amountPrice -= 1
+    //     addToCart(cartItems)
+    //   }
+
+    //   const handleDeleAll = (idProduct)=>{//Giả sử người dùng mua 11 sản phẩm nhưng cùng 1 loại nhưng có lúc không thích và muốn xoá hết đi thì dùng hàm này
+   //     const indexProduct = cartItems.findIndexOf(item=>item.idProduct._id === idProduct)//tìm vị trí phần tử muốn xoá
+    //     cartItems.splice(indexProduct,1)
+    //     addToCart(cartItems)
+    //   }
+
     const columns2 = [
         {
             title: 'Ảnh',
