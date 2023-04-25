@@ -5,7 +5,7 @@ import { ShoppingCartOutlined } from '@ant-design/icons';
 import { useAuth, useCart, useProduct } from '~/hooks';
 export default function ProductPage() {
     const { products, getAllProducts } = useProduct();
-    const {cartItems} = useCart()
+    const { cartItems } = useCart();
     const { user } = useAuth();
     const { addToCart } = useCart();
     const [price, setPrice] = useState(0);
@@ -53,15 +53,18 @@ export default function ProductPage() {
     ];
 
     const handleAddToCart = (product) => {
-       let isExist = cartItems.listProduct.find(item=>item.idProduct === product._id )
-       console.log(cartItems.listProduct,product._id)
-       if(isExist){
-        isExist.amountProduct+=1
-       }else{
-        cartItems.listProduct.push({idProduct:product._id,amountProduct:1})
-       }
-    addToCart(cartItems)
-    
+        const { listProduct } = cartItems;
+
+        const existingItem = cartItems.listProduct.find(
+            (item) => item.idProduct._id === product._id,
+        );
+        if (existingItem) {
+            existingItem.amountProduct++;
+        } else {
+            listProduct.push({ idProduct: product._id, amountProduct: 1 });
+        }
+
+        addToCart({ idCustomer: user._id, cartItems });
     };
 
     return (

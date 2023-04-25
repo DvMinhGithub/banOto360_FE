@@ -12,11 +12,11 @@ function* getCartList({ payload }) {
     }
 }
 
-function* addToCartList({payload:{idCustomer,listProduct}} ) {
+function* addToCartList({ payload: { idCustomer, cartItems } }) {
     try {
-        const res = yield api.post(`/carts/${idCustomer}`, listProduct);
+        const res = yield api.post(`/carts/${idCustomer}`, cartItems);
         yield put(cartActions.addToCartSuccess(res));
-        yield put(cartActions.getCartListRequest(idCustomer))
+        yield put(cartActions.getCartListRequest(idCustomer));
     } catch (error) {
         yield put(cartActions.addToCartFailure(error));
     }
