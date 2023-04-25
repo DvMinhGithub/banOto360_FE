@@ -70,6 +70,7 @@ export default function Header() {
                         openCart={openCart}
                         onClose={handleCloseCart}
                         cartItems={cartItems}
+                        userId={user._id}
                     />
                     <div className="cart-item">
                         <span>
