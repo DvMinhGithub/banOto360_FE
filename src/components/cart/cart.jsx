@@ -1,29 +1,13 @@
 import { Drawer, Empty } from 'antd';
 import { memo } from 'react';
 import './cart.scss';
-
+import useCart from '../../hooks/useCart';
 import { InputNumber, Table } from 'antd';
 
-function CartComponent({ openCart, onClose, cartItems }) {
-
-    // const handleAddMore = (idProduct)=>{//id product ở đây là id của sản phẩm đang bấm thêm hoặc xoá
-    //     const product = cartItems.find(item=>item.idProduct._id === idProduct)
-    //     product.amountPrice += 1
-    //     addToCart(cartItems)
-    //   }
-      
-    //   const handleDeleteMore = (idProduct)=>{
-    //     const product = cartItems.find(item=>item.idProduct._id === idProduct)
-    //     product.amountPrice -= 1
-    //     addToCart(cartItems)
-    //   }
-
-    //   const handleDeleAll = (idProduct)=>{//Giả sử người dùng mua 11 sản phẩm nhưng cùng 1 loại nhưng có lúc không thích và muốn xoá hết đi thì dùng hàm này
-   //     const indexProduct = cartItems.findIndexOf(item=>item.idProduct._id === idProduct)//tìm vị trí phần tử muốn xoá
-    //     cartItems.splice(indexProduct,1)
-    //     addToCart(cartItems)
-    //   }
-
+function CartComponent({ openCart, onClose, cartItems,userId }) {
+    console.log(userId)
+   const {addToCart} = useCart()
+   
     const columns2 = [
         {
             title: 'Ảnh',
@@ -46,7 +30,20 @@ function CartComponent({ openCart, onClose, cartItems }) {
             title: 'Số lượng',
             dataIndex: ['amountProduct'],
             key: 'amountProduct',
-            render: (text, record) => <InputNumber min={1} value={text} />,
+            render: (amountProduct, record) => (
+                <InputNumber
+                    min={1}
+                    defaultValue={amountProduct}
+                    onChange={(e) => {
+                        const item = cartItems.listProduct.find(
+                            (item) =>
+                                item.idProduct._id === record.idProduct._id,
+                        );
+                        item.amountProduct = e;
+                        addToCart({ idCustomer: userId, cartItems });
+                    }}
+                />
+            ),
         },
         {
             title: 'Giá',
