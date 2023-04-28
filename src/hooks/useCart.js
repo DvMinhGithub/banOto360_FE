@@ -8,8 +8,10 @@ export default function useProduct() {
     const cartItems = useSelector((state) => state.carts.cartItems);
     const error = useSelector((state) => state.carts.error);
 
-    const getCartList = (data) => dispatch(cartActions.getCartListRequest(data));
+    const getCartList = (data) =>
+        dispatch(cartActions.getCartListRequest(data));
     const addToCart = (data) => dispatch(cartActions.addToCartRequest(data));
+    const resetCart = (data) => dispatch(cartActions.resetCartRequest(data));
 
     return {
         loading,
@@ -17,5 +19,6 @@ export default function useProduct() {
         error,
         getCartList,
         addToCart,
+        resetCart,
     };
 }

@@ -1,10 +1,12 @@
-import config from '../configs/index';
-import HomePage from '../pages/homePage/homePage.jsx';
-import ProductPage from '../pages/productPage/productPage.jsx';
-import BlogPage from '../pages/blogPage/blogPage.jsx';
-import ContactPage from '../pages/contactPage/contactPage.jsx';
-import LoginPage from '../pages/loginPage/loginPage';
-import RegisterPage from '../pages/registerPage/registerPage';
+import config from '~/configs';
+import BlogPage from '~/pages/blogPage/blogPage';
+import CartPage from '~/pages/cart/CartPage';
+import ContactPage from '~/pages/contactPage/contactPage';
+import HomePage from '~/pages/homePage/homePage';
+import LoginPage from '~/pages/loginPage/loginPage';
+import ProductPage from '~/pages/productPage/productPage';
+import RegisterPage from '~/pages/registerPage/registerPage';
+
 export const publicRoutes = [
     {
         path: config.routes.login,
@@ -38,6 +40,12 @@ export const publicRoutes = [
     {
         path: config.routes.register,
         needShowSideMenu: false,
-       element:<RegisterPage/>
+        element: <RegisterPage />,
+    },
+    {
+        path: config.routes.cart,
+        needShowSideMenu: true,
+        element: <CartPage />,
+        label: 'Cart',
     },
 ];

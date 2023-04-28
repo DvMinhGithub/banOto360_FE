@@ -22,9 +22,20 @@ function* addToCartList({ payload: { idCustomer, cartItems } }) {
     }
 }
 
+function* resetCartList({ payload }) {
+    try {
+        const res = yield api.put(`/carts/reset/${payload}`);
+        yield put(cartActions.resetCartSuccess(res));
+        yield put(cartActions.getCartListRequest(payload));
+    } catch (error) {
+        yield put(cartActions.resetCartFailure(error));
+    }
+}
+
 const cartSaga = [
     takeLatest(cartActions.getCartListRequest, getCartList),
     takeLatest(cartActions.addToCartRequest, addToCartList),
+    takeLatest(cartActions.resetCartRequest, resetCartList),
 ];
 
 export default cartSaga;

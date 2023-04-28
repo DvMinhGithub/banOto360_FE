@@ -1,15 +1,13 @@
 import { ShoppingCartOutlined } from '@ant-design/icons';
-import { Fragment, useCallback, useEffect, useState } from 'react';
+import { Fragment, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useCart } from '~/hooks';
 import useAuth from '~/hooks/useAuth';
 import { publicRoutes } from '../../routes/index';
-import CartComponent from '../cart/cart';
 import './header.scss';
 
 export default function Header() {
     const { user } = useAuth();
-    console.log("🚀 ~ file: header.jsx:12 ~ Header ~ user:", user)
     const { cartItems, getCartList } = useCart();
 
     useEffect(() => {
@@ -23,15 +21,6 @@ export default function Header() {
     const location = useLocation();
     const navigate = useNavigate();
 
-    const [openCart, setOpenCart] = useState(false);
-
-    const handleShowCart = () => {
-        setOpenCart(true);
-    };
-
-    const handleCloseCart = useCallback(() => {
-        setOpenCart(false);
-    }, []);
     return (
         <div className="header">
             <div
@@ -47,7 +36,7 @@ export default function Header() {
             </div>
             <div className="header__menu">
                 {publicRoutes.map((item, key) => {
-                    return item.needShowSideMenu ? (
+                    return item.needShowSideMenu && item.label !== 'Cart' ? (
                         <div
                             onClick={() => navigate(item.path)}
                             style={{
@@ -65,12 +54,10 @@ export default function Header() {
             <div className="header__action">
                 <div className="header__action-account">{user?.userName}</div>
                 <div className="header__action-cart">
-                    <ShoppingCartOutlined onClick={handleShowCart} />
-                    <CartComponent
-                        openCart={openCart}
-                        onClose={handleCloseCart}
-                        cartItems={cartItems}
-                        userId={user._id}
+                    <ShoppingCartOutlined
+                        onClick={() => {
+                            navigate('/cart');
+                        }}
                     />
                     <div className="cart-item">
                         <span>
