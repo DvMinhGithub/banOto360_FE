@@ -8,7 +8,7 @@ function* getAllProducts() {
         const res = yield api.get('/cars');
         yield put(productActions.getAllProductsSuccess(res));
     } catch (error) {
-        yield put(productActions.getCarCollectionFailure(error));
+        yield put(productActions.getAllProductsFailure(error));
     }
 }
 

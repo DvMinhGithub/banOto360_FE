@@ -31,7 +31,9 @@ export default function LoginPage() {
                 <Form name="login-form" style={{ width: '60%' }}>
                     <Form.Item>
                         <Input
-                            prefix={<UserOutlined className="site-form-item-icon" />}
+                            prefix={
+                                <UserOutlined className="site-form-item-icon" />
+                            }
                             placeholder="Username"
                             name="email"
                             onChange={handleChange}
@@ -39,7 +41,9 @@ export default function LoginPage() {
                     </Form.Item>
                     <Form.Item>
                         <Input.Password
-                            prefix={<LockOutlined className="site-form-item-icon" />}
+                            prefix={
+                                <LockOutlined className="site-form-item-icon" />
+                            }
                             placeholder="Password"
                             name="password"
                             onChange={handleChange}
@@ -57,7 +61,9 @@ export default function LoginPage() {
                 </Form>
                 <div className="register-action">
                     Bạn chưa có tài khoản ?
-                    <Link to="/register" style={{ textDecoration: 'none', marginLeft: '5px' }}>
+                    <Link
+                        to="/register"
+                        style={{ textDecoration: 'none', marginLeft: '5px' }}>
                         Đăng ký ngay
                     </Link>
                 </div>
