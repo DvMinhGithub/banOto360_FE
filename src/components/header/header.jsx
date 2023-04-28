@@ -9,8 +9,8 @@ import './header.scss';
 
 export default function Header() {
     const { user } = useAuth();
+    console.log("🚀 ~ file: header.jsx:12 ~ Header ~ user:", user)
     const { cartItems, getCartList } = useCart();
-    console.log("🚀 ~ file: header.jsx:13 ~ Header ~ cartItems:", cartItems)
 
     useEffect(() => {
         getCartList(user._id);

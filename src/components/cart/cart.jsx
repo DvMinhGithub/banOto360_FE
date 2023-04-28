@@ -5,7 +5,6 @@ import useCart from '../../hooks/useCart';
 import { InputNumber, Table } from 'antd';
 
 function CartComponent({ openCart, onClose, cartItems,userId }) {
-    console.log(userId)
    const {addToCart} = useCart()
    
     const columns2 = [

@@ -1,44 +1,55 @@
-import axios from "axios";
+import axios from 'axios';
+import Cookies from 'js-cookie';
 
 const API = axios.create({
-    baseURL: "http://localhost:8080/api/v1",
+    baseURL: 'http://localhost:8080/api/v1',
+    headers: {
+        Accept: 'application/json',
+    },
 });
 
 API.interceptors.request.use(
-    async function (config) {
+    (config) => {
+        const token = Cookies.get('accessToken');
+        if (token) {
+            config.headers.Authorization = `Bearer ${token}`;
+        }
         return config;
     },
-    function (error) {
-        return Promise.reject(error.data);
-    }
+    (error) => {
+        return Promise.reject(error);
+    },
 );
 
 API.interceptors.response.use(
-    function (response) {
+    (response) => {
         return response.data;
     },
-    function (error) {
-        return Promise.reject(error.response.data);
-    }
+    async (error) => {
+        const originalRequest = error.config;
+        if (error.response?.status === 403) {
+            try {
+                const refreshToken = Cookies.get('refreshToken');
+                const resp = await API.post('/customers/refreshToken', {
+                    refreshToken,
+                });
+                Cookies.set('accessToken', resp.data.accessToken, {
+                    path: '/',
+                    expires: 1,
+                });
+                Cookies.set('refreshToken', resp.data.refreshToken, {
+                    path: '/',
+                    expires: 1,
+                });
+                originalRequest.headers.Authorization = `Bearer ${resp.data.accessToken}`;
+                return API(originalRequest);
+            } catch (error) {
+                Cookies.remove('accessToken');
+                Cookies.remove('refreshToken');
+            }
+        }
+        return Promise.reject(error.response?.data);
+    },
 );
 
-const api = {
-    get: (url, token, params) => {
-        const config = token ? { headers: { Authorization: `Bearer ${token}` }, params } : { params }
-        return API.get(url, config);
-    },
-    post: (url, data, token) => {
-        const headers = token ? { Authorization: `Bearer ${token}` } : {};
-        return API.post(url, data, { headers });
-    },
-    put: (url, data, token) => {
-        const headers = token ? { Authorization: `Bearer ${token}` } : {};
-        return API.put(url, data, { headers });
-    },
-    delete: (url, token) => {
-        const headers = token ? { Authorization: `Bearer ${token}` } : {};
-        return API.delete(url, { headers });
-    },
-};
-
-export default api;
+export default API;

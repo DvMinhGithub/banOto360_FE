@@ -1,14 +1,15 @@
+import Cookies from 'js-cookie';
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import useAuth from '~/hooks/useAuth';
 
 export default function ProtectedComponent({ children }) {
-    const { token } = useAuth();
+    const accessToken = Cookies.get('accessToken');
     const location = useLocation();
     const navigate = useNavigate();
     const { pathname } = location;
+
     useEffect(() => {
-        if (token) {
+        if (accessToken) {
             if (pathname === '/login' || pathname === '/register') {
                 navigate('/');
             }
@@ -19,7 +20,7 @@ export default function ProtectedComponent({ children }) {
                 navigate('/login');
             }
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [accessToken, navigate, pathname]);
+
     return children;
 }
