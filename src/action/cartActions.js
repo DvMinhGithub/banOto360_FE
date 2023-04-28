@@ -9,6 +9,11 @@ const cartActions = {
     addToCartRequest: createAction(cartTypes.ADD_TO_CART_REQUEST),
     addToCartSuccess: createAction(cartTypes.ADD_TO_CART_SUCCESS),
     addToCartFailure: createAction(cartTypes.ADD_TO_CART_FAILURE),
+
+    resetCartRequest: createAction(cartTypes.RESET_CART_LIST_REQUEST),
+    resetCartSuccess: createAction(cartTypes.RESET_CART_LIST_SUCCESS),
+    resetCartFailure: createAction(cartTypes.RESET_CART_LIST_FAILURE),
+
 };
 
 export default cartActions;
